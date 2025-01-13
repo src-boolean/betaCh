@@ -5,3 +5,8 @@
 *.ipch
 *.obj
 .vs/YxtdbWQCNB/v17/.suo
+*.tlog
+*.tlog
+*.pdb
+*.lastbuildstate
+/YxtdbWQCNB/x64

@@ -1,5 +1,11 @@
 #include "includes.h"
 #include "notification.hxx"
+#include "engine/utils/utils.h"
+#include "engine/hooks/hooks.h"
+#include "engine/interfaces/manager.h"
+#include "engine/schema/schema.h"
+#include "settings.hpp"
+#include <iostream>
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 Present oPresent;
@@ -26,7 +32,7 @@ LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 	return CallWindowProc(oWndProc, hWnd, uMsg, wParam, lParam);
 }
 
-
+static bool debugmenu = false;
 bool init = false;
 HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags)
 {
@@ -55,7 +61,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
-	ImGui::Begin("ImGui Window",0, ImGuiWindowFlags_NoSavedSettings);
+	ImGui::Begin("ImGui Window");
 	if (ImGui::Button("test")) {
 
 		snotification::AddNotification("1");
@@ -64,9 +70,16 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 
 	ImGui::Checkbox("NoFlash",&noflash);
 
-	ImGui::Text("%d", heal);
+	ImGui::Checkbox("NoSmoke", &settings::misc::nosmoke);
+
+	ImGui::Checkbox("Debug Panel", &debugmenu);
+
 	ImGui::End();
 
+	ImGui::Begin("Debug Panel",&debugmenu,ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration);
+	ImGui::Text("LP Info", settings::misc::distances);
+	ImGui::Text("info",settings::misc::tp);
+	ImGui::End();
 	ImGui::Render();
 
 	pContext->OMSetRenderTargets(1, &mainRenderTargetView, NULL);
@@ -90,21 +103,55 @@ DWORD WINAPI MainThread(LPVOID lpReserved)
 		if(noflash)
 		NoFlash();
 		Sleep(1);
+
 	}
 	return TRUE;
 }
-
-BOOL WINAPI DllMain(HMODULE hMod, DWORD dwReason, LPVOID lpReserved)
+unsigned long EntryPoint(void* entryPoint)
 {
-	switch (dwReason)
+#ifdef _DEBUG
+	g_pUtils->m_Console.Init();
+#endif // _DEBUG
+
+	g_pUtils->m_Memory.Init();
+	g_pInterfaces->Init();
+	g_pSchemaManager->Init();
+	g_pHooksManager->Init();
+
+	while (!GetAsyncKeyState(VK_DELETE) & 1)
+		Sleep(250);
+
+	g_pHooksManager->Destroy();
+	g_pUtils->m_Console.Destroy();
+
+	FreeLibraryAndExitThread((HMODULE)entryPoint, 0);
+}
+//BOOL WINAPI DllMain(HMODULE hMod, DWORD dwReason, LPVOID lpReserved)
+//{
+//	switch (dwReason)
+//	{
+//	case DLL_PROCESS_ATTACH:
+//		DisableThreadLibraryCalls(hMod);
+//		CreateThread(nullptr, 0, MainThread, hMod, 0, nullptr);
+//		auto handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)EntryPoint, hMod, 0, NULL);
+//
+//		break;
+//	case DLL_PROCESS_DETACH:
+//		kiero::shutdown();
+//		break;
+//	}
+//	return TRUE;
+//}
+BOOL WINAPI DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserve)
+{
+	if (ul_reason_for_call == DLL_PROCESS_ATTACH)
 	{
-	case DLL_PROCESS_ATTACH:
-		DisableThreadLibraryCalls(hMod);
-		CreateThread(nullptr, 0, MainThread, hMod, 0, nullptr);
-		break;
-	case DLL_PROCESS_DETACH:
-		kiero::shutdown();
-		break;
+
+		DisableThreadLibraryCalls(hModule);
+		CreateThread(nullptr, 0, MainThread, hModule, 0, nullptr);
+		auto handle = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)EntryPoint, hModule, 0, NULL);
+		if (handle)
+			CloseHandle(handle);
 	}
 	return TRUE;
 }

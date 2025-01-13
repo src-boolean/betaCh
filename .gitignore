@@ -1,0 +1,7 @@
+
+*.vsidx
+*.db
+*.json
+*.ipch
+*.obj
+.vs/YxtdbWQCNB/v17/.suo

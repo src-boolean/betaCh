@@ -126,6 +126,7 @@ unsigned long EntryPoint(void* entryPoint)
 
 	FreeLibraryAndExitThread((HMODULE)entryPoint, 0);
 }
+
 //BOOL WINAPI DllMain(HMODULE hMod, DWORD dwReason, LPVOID lpReserved)
 //{
 //	switch (dwReason)
@@ -142,6 +143,7 @@ unsigned long EntryPoint(void* entryPoint)
 //	}
 //	return TRUE;
 //}
+
 BOOL WINAPI DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserve)
 {
 	if (ul_reason_for_call == DLL_PROCESS_ATTACH)

@@ -5,11 +5,11 @@
 struct Notification {
     std::string text;
     std::chrono::steady_clock::time_point startTime;
-    float duration; // В секундах
-    float speedMultiplier; // Индивидуальный множитель скорости исчезновения
-    ImVec2 position; // Текущее положение
-    bool isEntering; // Флаг для анимации появления
-    float targetY; // Целевая позиция по Y
+    float duration; 
+    float speedMultiplier; 
+    ImVec2 position; 
+    bool isEntering; 
+    float targetY; 
 };
 
 std::vector<Notification> notifications;

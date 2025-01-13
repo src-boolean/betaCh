@@ -55,7 +55,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
-	ImGui::Begin("ImGui Window");
+	ImGui::Begin("ImGui Window",0, ImGuiWindowFlags_NoSavedSettings);
 	if (ImGui::Button("test")) {
 
 		snotification::AddNotification("1");
@@ -63,6 +63,8 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	snotification::RenderNotifications();
 
 	ImGui::Checkbox("NoFlash",&noflash);
+
+	ImGui::Text("%d", heal);
 	ImGui::End();
 
 	ImGui::Render();

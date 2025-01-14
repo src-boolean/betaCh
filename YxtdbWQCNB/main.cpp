@@ -74,7 +74,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	}
 
 	if (menucheat::open) {
-		ImGui::Begin("ImGui Window");
+		ImGui::Begin("ImGui Window",0, ImGuiWindowFlags_NoSavedSettings);
 		if (ImGui::Button("test")) {
 
 			snotification::AddNotification("1");
@@ -94,7 +94,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	}
 
 	if (debugmenu) {
-		ImGui::Begin("Debug Panel", 0, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration);
+		ImGui::Begin("Debug Panel", 0, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoSavedSettings);
 		ImGui::Text("LP Info", menucheat::settings::misc::distances);
 		ImGui::Text("info", menucheat::settings::misc::tp);
 		ImGui::End();

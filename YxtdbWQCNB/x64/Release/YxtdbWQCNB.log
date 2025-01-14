@@ -1,4 +1,24 @@
-﻿  main.cpp
+﻿  features.cpp
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\math\vectors.h(27,14): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+  (компиляция исходного файла "engine/features/features.cpp")
+  
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\math\vectors.h(104,14): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+  (компиляция исходного файла "engine/features/features.cpp")
+  
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\math\vectors.h(221,14): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+  (компиляция исходного файла "engine/features/features.cpp")
+  
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\schema\info.h(5,8): warning C4099: SchemaClassInfoData: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+  (компиляция исходного файла "engine/features/features.cpp")
+      C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\classes\entities.h(13,7):
+       см. объявление "SchemaClassInfoData"
+  
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\schema\info.h(87,8): warning C4099: SchemaClassInfoData: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+  (компиляция исходного файла "engine/features/features.cpp")
+      C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\schema\info.h(87,8):
+       см. объявление "SchemaClassInfoData"
+  
+  main.cpp
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(12,9): warning C4005: DXGI_STATUS_OCCLUDED: изменение макроопределения
   (компиляция исходного файла "main.cpp")
       C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\winerror.h(58160,9):
@@ -159,8 +179,8 @@ C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\schema\info.h(
        см. объявление "SchemaClassInfoData"
   
   Создание кода
-  1 of 1750 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    11 functions had inline decision re-evaluated but remain unchanged
+  13 of 1752 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    13 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   YxtdbWQCNB.vcxproj -> C:\Users\Float\source\repos\git_darkside\betaCh\x64\Release\YxtdbWQCNB.dll

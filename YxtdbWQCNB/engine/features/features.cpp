@@ -626,36 +626,43 @@ void CFeatures::Misc::Aimbot(C_UserCmd* cmd)
 {
     if (!g_pInterfaces->m_Interfaces.pEngineClient->IsInGame() || !g_pInterfaces->m_Interfaces.pEngineClient->IsConnected())
         return;
+
     std::vector<EntityListInfo> Entities;
     g_pInterfaces->m_Interfaces.pEntityList->UpdateEntities(Entities);
 
-
     C_PlayerPawn* Target = nullptr;
+    float ClosestDistance = FLT_MAX; // Изначально максимально возможная дистанция
+    Vector3D BestAngle;
 
     for (auto& entity : Entities)
     {
         if (!entity.Pawn->IsAlive() || Globals::LocalPlayerPawn == entity.Pawn || entity.Pawn->GetTeam() == Globals::LocalPlayerPawn->GetTeam())
             continue;
 
+        // Получение позиции кости врага
         Vector3D Bone = entity.Pawn->GetBaseEntity()->GetBonePosition(6);
+        Vector3D LocalPos = Globals::LocalPlayerPawn->GetBaseEntity()->GetBonePosition(6);
 
-        
-        Vector3D Local_pos = Globals::LocalPlayerPawn->GetBaseEntity()->GetBonePosition(6);
+        // Расчёт расстояния до врага
+        float Distance = LocalPos.Distance(Bone);
 
-        Vector3D Angle = g_pMath->CalcAngle(Globals::LocalPlayerPawn->GetBaseEntity()->GetEyePosition(), Bone);
-        menucheat::settings::misc::tp = cmd->command_number;
-        Angle.Normalize();
+        if (Distance < ClosestDistance) // Если это ближайший враг
+        {
+            ClosestDistance = Distance;
+            Target = entity.Pawn;
 
-
-        if (GetAsyncKeyState(VK_XBUTTON2)) {
-
-            
-            g_pInterfaces->m_Interfaces.pGameInput->SetViewAngles(Angle);
-  
-                
+            // Рассчитываем угол для ближайшего врага
+            BestAngle = g_pMath->CalcAngle(Globals::LocalPlayerPawn->GetBaseEntity()->GetEyePosition(), Bone);
+            BestAngle.Normalize();
         }
-
     }
 
+    if (Target && GetAsyncKeyState(VK_XBUTTON2)) // Если есть цель и кнопка нажата
+    {
+        // Устанавливаем угол на ближайшего врага
+        g_pInterfaces->m_Interfaces.pGameInput->SetViewAngles(BestAngle);
 
+        // Имитация стрельбы
+      
+    }
 }

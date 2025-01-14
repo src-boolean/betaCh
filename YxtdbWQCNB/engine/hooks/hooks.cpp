@@ -157,7 +157,7 @@ void __fastcall CHooksManager::CreateMove::Hook(CGameInput* input, int edx, char
 
 bool __fastcall CHooksManager::NoSmokeHook::Hook(void* a1, void* a2, void* a3, void* a4, void* a5, void* a6)
 {
-	if (settings::misc::nosmoke)
+	if (menucheat::settings::misc::nosmoke)
 		return oNoSmoke(a1, a2, a3, a4, a5, a6);
 
 	if (!g_pInterfaces->m_Interfaces.pEngineClient->IsConnected())
@@ -175,7 +175,7 @@ bool __fastcall CHooksManager::NoSmokeHook::Hook(void* a1, void* a2, void* a3, v
 
 bool __fastcall CHooksManager::RemoveLegs::Hook(void* a1, void* a2, void* a3, void* a4, void* a5)
 {
-	if (settings::misc::nosmoke)
+	if (menucheat::settings::misc::nosmoke)
 		return oRemoveLegs(a1, a2, a3, a4, a5);
 
 	if (!g_pInterfaces->m_Interfaces.pEngineClient->IsConnected())

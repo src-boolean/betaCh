@@ -133,6 +133,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="engine\features\features.cpp" />
+    <ClCompile Include="engine\hooks\hooks.cpp" />
+    <ClCompile Include="engine\interfaces\manager.cpp" />
+    <ClCompile Include="engine\renderer\renderer.cpp" />
+    <ClCompile Include="engine\schema\info.cpp" />
+    <ClCompile Include="engine\schema\schema.cpp" />
+    <ClCompile Include="engine\utils\utils.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -146,10 +153,22 @@
     <ClCompile Include="kiero\minhook\src\hook.c" />
     <ClCompile Include="kiero\minhook\src\trampoline.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="sdk\classes\entities.cpp" />
+    <ClCompile Include="sdk\globals.cpp" />
+    <ClCompile Include="sdk\interfaces\interfaces.cpp" />
+    <ClCompile Include="sdk\math\mathematics.cpp" />
+    <ClCompile Include="sdk\structs\structs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cheat.h" />
     <ClInclude Include="cheat.hpp" />
+    <ClInclude Include="engine\features\features.h" />
+    <ClInclude Include="engine\hooks\hooks.h" />
+    <ClInclude Include="engine\interfaces\manager.h" />
+    <ClInclude Include="engine\renderer\renderer.h" />
+    <ClInclude Include="engine\schema\info.h" />
+    <ClInclude Include="engine\schema\schema.h" />
+    <ClInclude Include="engine\utils\utils.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx11.h" />
@@ -170,6 +189,14 @@
     <ClInclude Include="kiero\minhook\src\trampoline.h" />
     <ClInclude Include="notification.h" />
     <ClInclude Include="notification.hxx" />
+    <ClInclude Include="sdk\classes\entities.h" />
+    <ClInclude Include="sdk\globals.h" />
+    <ClInclude Include="sdk\interfaces\interfaces.h" />
+    <ClInclude Include="sdk\math\mathematics.h" />
+    <ClInclude Include="sdk\math\matrix.h" />
+    <ClInclude Include="sdk\math\vectors.h" />
+    <ClInclude Include="sdk\structs\structs.h" />
+    <ClInclude Include="settings.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="kiero\minhook\dll_resources\MinHook.def" />

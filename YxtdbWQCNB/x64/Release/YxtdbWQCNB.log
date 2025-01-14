@@ -139,12 +139,28 @@ C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d10.h(609,9):
       C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\winerror.h(58650,9):
       см. предыдущее определение "D3D10_ERROR_FILE_NOT_FOUND"
   
-C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\cheat.hpp(21,20): warning C4244: =: преобразование "uintptr_t" в "int", возможна потеря данных
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\math\vectors.h(27,14): warning C4244: return: преобразование "double" в "float", возможна потеря данных
   (компиляция исходного файла "main.cpp")
   
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\math\vectors.h(104,14): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+  
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\math\vectors.h(221,14): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+  
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\schema\info.h(5,8): warning C4099: SchemaClassInfoData: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+  (компиляция исходного файла "main.cpp")
+      C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\classes\entities.h(13,7):
+       см. объявление "SchemaClassInfoData"
+  
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\schema\info.h(87,8): warning C4099: SchemaClassInfoData: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+  (компиляция исходного файла "main.cpp")
+      C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\schema\info.h(87,8):
+       см. объявление "SchemaClassInfoData"
+  
   Создание кода
-  1 of 1134 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  1 of 1750 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    12 functions had inline decision re-evaluated but remain unchanged
+    11 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   YxtdbWQCNB.vcxproj -> C:\Users\Float\source\repos\git_darkside\betaCh\x64\Release\YxtdbWQCNB.dll

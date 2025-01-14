@@ -643,7 +643,7 @@ void CFeatures::Misc::Aimbot(C_UserCmd* cmd)
         Vector3D Local_pos = Globals::LocalPlayerPawn->GetBaseEntity()->GetBonePosition(6);
 
         Vector3D Angle = g_pMath->CalcAngle(Globals::LocalPlayerPawn->GetBaseEntity()->GetEyePosition(), Bone);
-        settings::misc::tp = cmd->command_number;
+        menucheat::settings::misc::tp = cmd->command_number;
         Angle.Normalize();
 
 

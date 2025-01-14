@@ -1,3 +1,10 @@
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\features\features.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\features.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\hooks\hooks.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\hooks.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\interfaces\manager.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\manager.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\renderer\renderer.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\renderer.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\schema\info.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\info.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\schema\schema.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\schema.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\engine\utils\utils.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\utils.obj
 C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\imgui\imgui.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\imgui.obj
 C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\imgui\imgui_demo.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\imgui_demo.obj
 C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\imgui\imgui_draw.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\imgui_draw.obj
@@ -11,3 +18,8 @@ C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\kiero\minhook\src\hde
 C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\kiero\minhook\src\hook.c;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\hook.obj
 C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\kiero\minhook\src\trampoline.c;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\trampoline.obj
 C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\main.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\main.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\classes\entities.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\entities.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\globals.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\globals.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\interfaces\interfaces.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\interfaces.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\math\mathematics.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\mathematics.obj
+C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\sdk\structs\structs.cpp;C:\Users\Float\source\repos\git_darkside\betaCh\YxtdbWQCNB\x64\Release\structs.obj

@@ -60,26 +60,46 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
+	if (GetAsyncKeyState(VK_INSERT) & 0x8000) {
+		if (!menucheat::isInsertPressed) {
+			menucheat::open = !menucheat::open;
+			menucheat::isInsertPressed = true;
+		}
 
-	ImGui::Begin("ImGui Window");
-	if (ImGui::Button("test")) {
 
-		snotification::AddNotification("1");
 	}
-	snotification::RenderNotifications();
+	else
+	{
+		menucheat::isInsertPressed = false;
+	}
 
-	ImGui::Checkbox("NoFlash",&noflash);
+	if (menucheat::open) {
+		ImGui::Begin("ImGui Window");
+		if (ImGui::Button("test")) {
 
-	ImGui::Checkbox("NoSmoke", &settings::misc::nosmoke);
+			snotification::AddNotification("1");
+		}
+		snotification::RenderNotifications();
 
-	ImGui::Checkbox("Debug Panel", &debugmenu);
+		ImGui::Checkbox("NoFlash", &noflash);
 
-	ImGui::End();
+		ImGui::Checkbox("NoSmoke", &menucheat::settings::misc::nosmoke);
 
-	ImGui::Begin("Debug Panel",&debugmenu,ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration);
-	ImGui::Text("LP Info", settings::misc::distances);
-	ImGui::Text("info",settings::misc::tp);
-	ImGui::End();
+		ImGui::Checkbox("Debug Panel", &debugmenu);
+
+		ImGui::End();
+
+		
+
+	}
+
+	if (debugmenu) {
+		ImGui::Begin("Debug Panel", 0, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration);
+		ImGui::Text("LP Info", menucheat::settings::misc::distances);
+		ImGui::Text("info", menucheat::settings::misc::tp);
+		ImGui::End();
+	}
+
 	ImGui::Render();
 
 	pContext->OMSetRenderTargets(1, &mainRenderTargetView, NULL);

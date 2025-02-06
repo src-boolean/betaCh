@@ -84,7 +84,7 @@ bool CHooksManager::Init()
 
 	CreateHook(CreateMoveAddress, reinterpret_cast<void*>(&CHooksManager::CreateMove::Hook), reinterpret_cast<void**>(&CHooksManager::CreateMove::oCreateMove), "CreateMove");
 
-	//CreateHook(ForceCrosshairAddress, reinterpret_cast<void*>(&CHooksManager::ForceCrosshair::Hook), reinterpret_cast<void**>(&CHooksManager::ForceCrosshair::oForceCrosshair), "ForceCrosshair");
+	CreateHook(ForceCrosshairAddress, reinterpret_cast<void*>(&CHooksManager::ForceCrosshair::Hook), reinterpret_cast<void**>(&CHooksManager::ForceCrosshair::oForceCrosshair), "ForceCrosshair");
 
 	//CreateHook(GameOverlayAddress, reinterpret_cast<void*>(&CHooksManager::PresentScene::Hook), reinterpret_cast<void**>(&CHooksManager::PresentScene::oPresentScene), "PresentScene");
 
@@ -154,6 +154,18 @@ void __fastcall CHooksManager::CreateMove::Hook(CGameInput* input, int edx, char
 
 }
 
+CHooksManager::ForceCrosshair::oForceCrosshairFn CHooksManager::ForceCrosshair::oForceCrosshair = nullptr;
+
+bool __fastcall CHooksManager::ForceCrosshair::Hook(void* thisptr)
+{
+	if (Globals::LocalPlayerPawn &&
+		Globals::LocalPlayerPawn->IsAlive())
+	{
+		return true; // Принудительно включаем прицел
+	}
+
+	return oForceCrosshair(thisptr);
+}
 
 bool __fastcall CHooksManager::NoSmokeHook::Hook(void* a1, void* a2, void* a3, void* a4, void* a5, void* a6)
 {

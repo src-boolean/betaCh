@@ -63,6 +63,15 @@ private:
 
 
 
+	class ForceCrosshair {
+	public:
+		typedef bool(__fastcall* oForceCrosshairFn)(void*);
+		static oForceCrosshairFn oForceCrosshair;
+		static bool __fastcall Hook(void* thisptr);
+	};
+
+	ForceCrosshair m_ForceCrosshair;
+
 	class NoSmokeHook {
 	public:
 		typedef bool(__fastcall* oNoSmokeFn)(void* a1, void* a2, void* a3, void* a4, void* a5, void* a6);

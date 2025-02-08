@@ -622,6 +622,27 @@
 //
 //
 //}
+std::vector<Vector3D> GetMultiPoint(C_BaseEntity* entity, int boneIndex)
+{
+    std::vector<Vector3D> points;
+    Vector3D basePos = entity->GetBonePosition(boneIndex);
+
+   
+    points.push_back(basePos); // Центральная точка
+    points.push_back(basePos + Vector3D(0, 2, 0)); // Слева
+    points.push_back(basePos - Vector3D(0, 2, 0)); // Справа
+    points.push_back(basePos + Vector3D(0, 0, 2)); // Верх
+    points.push_back(basePos - Vector3D(0, 0, 2)); // Низ
+    points.push_back(basePos + Vector3D(1, 1, 1)); // Верхний левый
+    points.push_back(basePos - Vector3D(1, 1, 1)); // Нижний правый
+    points.push_back(basePos + Vector3D(1, -1, 1)); // Верхний правый
+    points.push_back(basePos - Vector3D(1, -1, 1)); // Нижний левый
+    points.push_back(basePos + Vector3D(0, 3, 0)); // Дальняя слева
+    points.push_back(basePos - Vector3D(0, 3, 0)); // Дальняя справа
+
+    return points;
+}
+
 void CFeatures::Misc::Aimbot(C_UserCmd* cmd)
 {
     if (!g_pInterfaces->m_Interfaces.pEngineClient->IsInGame() || !g_pInterfaces->m_Interfaces.pEngineClient->IsConnected())
@@ -631,7 +652,7 @@ void CFeatures::Misc::Aimbot(C_UserCmd* cmd)
     g_pInterfaces->m_Interfaces.pEntityList->UpdateEntities(Entities);
 
     C_PlayerPawn* Target = nullptr;
-    float ClosestDistance = FLT_MAX; // Изначально максимально возможная дистанция
+    float ClosestDistance = FLT_MAX;
     Vector3D BestAngle;
 
     for (auto& entity : Entities)
@@ -639,32 +660,26 @@ void CFeatures::Misc::Aimbot(C_UserCmd* cmd)
         if (!entity.Pawn->IsAlive() || Globals::LocalPlayerPawn == entity.Pawn || entity.Pawn->GetTeam() == Globals::LocalPlayerPawn->GetTeam())
             continue;
 
-        // Получение позиции кости врага
-        Vector3D Bone = entity.Pawn->GetBaseEntity()->GetBonePosition(6);
+        std::vector<Vector3D> HeadPoints = GetMultiPoint(entity.Pawn->GetBaseEntity(), 6);
         Vector3D LocalPos = Globals::LocalPlayerPawn->GetBaseEntity()->GetBonePosition(6);
 
-        // Расчёт расстояния до врага
-        float Distance = LocalPos.Distance(Bone);
-
-        if (Distance < ClosestDistance) // Если это ближайший враг
+        for (const auto& Bone : HeadPoints)
         {
-            ClosestDistance = Distance;
-            Target = entity.Pawn;
+            float Distance = LocalPos.Distance(Bone);
 
-            // Рассчитываем угол для ближайшего врага
-            BestAngle = g_pMath->CalcAngle(Globals::LocalPlayerPawn->GetBaseEntity()->GetEyePosition(), Bone);
-            BestAngle.Normalize();
+            if (Distance < ClosestDistance)
+            {
+                ClosestDistance = Distance;
+                Target = entity.Pawn;
+                BestAngle = g_pMath->CalcAngle(Globals::LocalPlayerPawn->GetBaseEntity()->GetEyePosition(), Bone);
+                BestAngle.Normalize();
+            }
         }
     }
 
-    if (Target && GetAsyncKeyState(VK_XBUTTON2)) // Если есть цель и кнопка нажата
+    if (Target && GetAsyncKeyState(VK_XBUTTON2))
     {
-        // Устанавливаем угол на ближайшего врага
         g_pInterfaces->m_Interfaces.pGameInput->SetViewAngles(BestAngle);
-
-        // Имитация стрельбы
-      
     }
 }
-
 

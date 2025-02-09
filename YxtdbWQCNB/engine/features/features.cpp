@@ -660,10 +660,23 @@ void CFeatures::Misc::Aimbot(C_UserCmd* cmd)
         if (!entity.Pawn->IsAlive() || Globals::LocalPlayerPawn == entity.Pawn || entity.Pawn->GetTeam() == Globals::LocalPlayerPawn->GetTeam())
             continue;
 
-        std::vector<Vector3D> HeadPoints = GetMultiPoint(entity.Pawn->GetBaseEntity(), 6);
+        int enemyHP = entity.Pawn->GetHealth();
+        int targetBone = (enemyHP < 60) ? 3 : 6; // 3 - грудь, 6 - голова
+
+        std::vector<Vector3D> AimPoints = GetMultiPoint(entity.Pawn->GetBaseEntity(), targetBone);
+
+       
+        if (enemyHP >= 60) {
+            std::vector<Vector3D> ExtraPoints = GetMultiPoint(entity.Pawn->GetBaseEntity(), 4); // Грудная клетка
+            AimPoints.insert(AimPoints.end(), ExtraPoints.begin(), ExtraPoints.end());
+
+            ExtraPoints = GetMultiPoint(entity.Pawn->GetBaseEntity(), 5); // Живот
+            AimPoints.insert(AimPoints.end(), ExtraPoints.begin(), ExtraPoints.end());
+        }
+
         Vector3D LocalPos = Globals::LocalPlayerPawn->GetBaseEntity()->GetBonePosition(6);
 
-        for (const auto& Bone : HeadPoints)
+        for (const auto& Bone : AimPoints)
         {
             float Distance = LocalPos.Distance(Bone);
 
@@ -676,7 +689,7 @@ void CFeatures::Misc::Aimbot(C_UserCmd* cmd)
             }
         }
     }
-
+   
     if (Target && GetAsyncKeyState(VK_XBUTTON2))
     {
         g_pInterfaces->m_Interfaces.pGameInput->SetViewAngles(BestAngle);
